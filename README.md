@@ -4,8 +4,8 @@ Class Design
 
 Hand
   int Card[13];  
-  isSequence(int[])
-  removeCards(int[])
+  isSequence(int[]);
+  removeCards(int[]);
   isSet(int[])
   isCanasta(int[])
   isPossibleSequence(int[])
