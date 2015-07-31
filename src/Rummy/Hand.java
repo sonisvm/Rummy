@@ -88,6 +88,30 @@ public class Hand
 			
 		}
 	}
+	public static void findAndRemoveSetsAndCanasta(){
+		List<Card> cardsSortedByRank = sortByRank(cardsInHand);
+		ArrayList<Card> cards = new ArrayList<Card>();
+		for(int i=0;i < cardsSortedByRank.size()-2;i++){
+			cards.add(cardsSortedByRank.get(i));
+			cards.add(cardsSortedByRank.get(i+1));
+			cards.add(cardsSortedByRank.get(i+2));
+			if(isSet(cards)){
+				if( i < cardsSortedByRank.size()-3){
+					cards.add(cardsSortedByRank.get(i+3));
+					if(isSet(cards)){
+						removeCards(cards);
+					}
+					else{
+						cards.remove(cards.size()-1);
+					}
+				
+				}
+				removeCards(cards);
+				
+			}
+			
+		}
+	}
 	
 	public static void displayHand(){
 		for(Card card : cardsInHand){
@@ -100,7 +124,28 @@ public class Hand
 		return cardsInHand;
 	}
 	
-	public boolean isRummy(List<Card> cardList) {
+	public boolean isRummy(List<Card> cards) {
+	    int i=0;
+	    int numNaturalSeq=0;
+	    ArrayList<Card> groupOfCards = new ArrayList<Card>();
+	    groupOfCards.add(cards.get(i));
+	    groupOfCards.add(cards.get(i+1));
+	    groupOfCards.add(cards.get(i+2));
+	    i += 3;
+	    while(i<cards.size()){
+	    	if(isSequence(groupOfCards) || isSet(groupOfCards) || isCanasta(groupOfCards)){
+	    		numNaturalSeq++;
+	    		groupOfCards.add(cards.get(i));
+	    		i++;
+	    	}
+	    	else{
+	    		groupOfCards.clear();
+	    		groupOfCards.add(cards.get(i-1));
+	    	}
+	    }
+	    if(numNaturalSeq >=2){
+	    	return true;
+	    }
 		return false;
 		
 	}
@@ -177,6 +222,9 @@ public class Hand
 		
 		hand.displayHand();
 		hand.removeSequences();
+
+		hand.findAndRemoveSetsAndCanasta();
+
 		hand.displayHand();
 		hand.removeSets();
 		hand.displayHand();
