@@ -1,4 +1,5 @@
 package Rummy;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -44,6 +45,7 @@ public class Hand
 		return true;
 	}
 	
+
 	public boolean isPossibleSequence(ArrayList<Card> cards){
 		for(int i = 0; i < cards.size(); i++)
 		{
@@ -58,8 +60,10 @@ public class Hand
 
 	}
 	
+
 	
 	public static void removeCards(ArrayList<Card> cards){
+
 		
 	}
 	
@@ -68,6 +72,7 @@ public class Hand
 		Collections.sort(cardList, new RankComparator());
 		return cardList;
 	}
+
 	
 	public List<Card> sortBySuit(List<Card> cards) {
 		List<Card> cardList = new ArrayList<Card>(cards);
