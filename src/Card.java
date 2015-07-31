@@ -16,11 +16,11 @@ public class Card implements Comparable<Card>
 	}
 
 	public int getSuit() {
-		return value/13;
+		return (value % 52) /13;
 	}
 
 	public int getRank() {
-		return value%13;
+		return (value % 52) %13;
 	}
 	
 	public boolean isSameSuite (Card card) {

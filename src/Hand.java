@@ -76,6 +76,13 @@ public class Hand
 		return cards.size();
 	}
 	
+	public static void removeSequences(){
+		//sort by suit
+		//sort by rank
+		for(int i=0;i<cardsInHand.size();i++){
+			
+		}
+	}
 	
 	public static void displayHand(){
 		for(Card card : cardsInHand){
@@ -85,7 +92,10 @@ public class Hand
 	
 	public static void main(String args[]){
 		Hand hand = new Hand();
-		hand.sortHand();
+		
 		hand.displayHand();
+		hand.removeSequences();
+		hand.removeSets();
+		
 	}
 }
