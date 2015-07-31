@@ -94,12 +94,23 @@ public class Hand
 	public static void findAndRemoveSets(){
 		List<Card> cardsSortedByRank = sortByRank(cardsInHand);
 		ArrayList<Card> cards = new ArrayList<Card>();
-		for(int i=0;i < cardsSortedByRank.size()-3;i++){
+		for(int i=0;i < cardsSortedByRank.size()-2;i++){
 			cards.add(cardsSortedByRank.get(i));
 			cards.add(cardsSortedByRank.get(i+1));
 			cards.add(cardsSortedByRank.get(i+2));
 			if(isSet(cards)){
+				if( i < cardsSortedByRank.size()-3){
+					cards.add(cardsSortedByRank.get(i+3));
+					if(isSet(cards)){
+						removeCards(cards);
+					}
+					else{
+						cards.remove(cards.size()-1);
+					}
+				
+				}
 				removeCards(cards);
+				
 			}
 			
 		}
