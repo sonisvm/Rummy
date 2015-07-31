@@ -89,6 +89,13 @@ public class Hand
 			
 		}
 	}
+	public static void findAndRemoveSets(){
+		//sort by suit
+		//sort by rank
+		for(int i=0;i<cardsInHand.size();i++){
+			
+		}
+	}
 	
 	public static void displayHand(){
 		for(Card card : cardsInHand){
@@ -105,7 +112,7 @@ public class Hand
 		
 		hand.displayHand();
 		hand.removeSequences();
-		hand.removeSets();
+		hand.findAndRemoveSets();
 		
 	}
 

@@ -18,10 +18,7 @@ public class Dealer {
 			}
 			 return hand;
 		}
-		
-<<<<<<< HEAD:src/Rummy/Dealer.java
 
-=======
 		public static void main(String args[]){
 //			ArrayList<Card> cards=getNewHand();
 //			for(Card c: cards){
@@ -35,5 +32,5 @@ public class Dealer {
 			h.displayHand();
 		}
 		
->>>>>>> origin/master:src/Dealer.java
+
 }
