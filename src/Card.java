@@ -51,7 +51,8 @@ public class Card
 	public String toString() {
 		String suit[] = {"H","S", "D", "C", "Joker"};
 		String rank[] = {"A","2", "3", "4", "5", "6", "7", "8", "9", "10" ,"J", "Q", "K"};
-		return suit[getSuit()] +"-"+  rank[getRank()];
+		String suit2[] = {"\u2764","\u2660","\u2666","\u2663","Joker"};
+		return suit2[getSuit()] +"-"+  rank[getRank()];
 	}
 	
 	

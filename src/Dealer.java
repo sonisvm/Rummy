@@ -20,10 +20,16 @@ public class Dealer {
 		}
 		
 		public static void main(String args[]){
-			ArrayList<Card> cards=getNewHand();
-			for(Card c: cards){
-				System.out.println(c.getRank() + " "+ c.getSuit());
-			}
+//			ArrayList<Card> cards=getNewHand();
+//			for(Card c: cards){
+//				System.out.println(c.getRank() + " "+ c.getSuit());
+//			}
+			Hand h = new Hand();
+			h.sortByRank();
+			h.displayHand();
+			System.out.println();
+			h.sortBySuit();
+			h.displayHand();
 		}
 		
 }
