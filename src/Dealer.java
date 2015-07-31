@@ -25,10 +25,10 @@ public class Dealer {
 //				System.out.println(c.getRank() + " "+ c.getSuit());
 //			}
 			Hand h = new Hand();
-			h.sortByRank();
+			h.sortByRank(h.getCardsInHand());
 			h.displayHand();
 			System.out.println();
-			h.sortBySuit();
+			h.sortBySuit(h.getCardsInHand());
 			h.displayHand();
 		}
 		

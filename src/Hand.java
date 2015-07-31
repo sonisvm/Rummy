@@ -1,6 +1,7 @@
 package Rummy;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Hand 
 {
@@ -62,12 +63,14 @@ public class Hand
 		
 	}
 	
-	public void sortByRank() {
-		Collections.sort(cardsInHand, new RankComparator());
+	public List<Card> sortByRank(List<Card> cardList) {
+		Collections.sort(cardList, new RankComparator());
+		return cardList;
 	}
 	
-	public void sortBySuit() {
-		Collections.sort(cardsInHand,new SuitComparator());
+	public List<Card> sortBySuit(List<Card> cardList) {
+		Collections.sort(cardList,new SuitComparator());
+		return cardList;
 	}
 	
 	public static int countHand(ArrayList<Card> cards){
@@ -84,10 +87,14 @@ public class Hand
 	
 	public static void displayHand(){
 		for(Card card : cardsInHand){
-			System.out.println(card.toString());
+			System.out.print(card.toString() + " ");
 		}
 	}
 	
+	public static ArrayList<Card> getCardsInHand() {
+		return cardsInHand;
+	}
+
 	public static void main(String args[]){
 		Hand hand = new Hand();
 		
