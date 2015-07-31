@@ -19,5 +19,21 @@ public class Dealer {
 			 return hand;
 		}
 		
+<<<<<<< HEAD:src/Rummy/Dealer.java
 
+=======
+		public static void main(String args[]){
+//			ArrayList<Card> cards=getNewHand();
+//			for(Card c: cards){
+//				System.out.println(c.getRank() + " "+ c.getSuit());
+//			}
+			Hand h = new Hand();
+			h.sortByRank(h.getCardsInHand());
+			h.displayHand();
+			System.out.println();
+			h.sortBySuit(h.getCardsInHand());
+			h.displayHand();
+		}
+		
+>>>>>>> origin/master:src/Dealer.java
 }
