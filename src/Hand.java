@@ -1,17 +1,18 @@
+import java.util.ArrayList;
 
 public class Hand 
 {
-	Card cardsInHand[];
+	private ArrayList<Card> cardsInHand;
 	
 	Hand(){
 		cardsInHand = Dealer.getNewHand();
 	}
 	
-	public boolean isSequence(Card cards[])
+	public boolean isSequence(ArrayList<Card> cards)
 	{
-		for(int i = 0; i < cards.length; i++)
+		for(int i = 0; i < cards.size(); i++)
 		{
-			if(!(cards[i].isPrev(cards[i+1]))){
+			if(!(cards.get(i).isPrev(cards.get(i+1)))){
 				return false;
 			}
 		}
@@ -19,40 +20,40 @@ public class Hand
 		
 	}
 	
-	public boolean isSet(Card cards[])
+	public boolean isSet(ArrayList<Card> cards)
 	{
-		for(int i = 0; i < cards.length; i++)
+		for(int i = 0; i < cards.size(); i++)
 		{
-			if(!cards[i].isSameRank(cards[i+1]) || cards[i].isSameSuite(cards[i+1])) {
+			if(!cards.get(i).isSameRank(cards.get(i+1)) || cards.get(i).isSameSuite(cards.get(i+1))) {
 				return false;
 			}
 		}
 		return true;
 	}
 	
-	public boolean isCanasta(Card cards[]){
-		for(int i = 0; i < cards.length; i++)
+	public boolean isCanasta(ArrayList<Card> cards){
+		for(int i = 0; i < cards.size(); i++)
 		{
-			if(!cards[i].isSameRank(cards[i+1]) || !cards[i].isSameSuite(cards[i+1])) {
+			if(!cards.get(i).isSameRank(cards.get(i+1)) || !cards.get(i).isSameSuite(cards.get(i+1))) {
 				return false;
 			}
 		}
 		return true;
 	}
 	
-	public boolean isPossibleSequence(Card cards[]){
+	public boolean isPossibleSequence(ArrayList<Card> cards){
 		
 	}
 	
-	public boolean isPossibleSet(Card cards[]){
+	public boolean isPossibleSet(ArrayList<Card> cards){
 		
 	}
 	
-	public void removeCards(Card cards[]){
+	public void removeCards(ArrayList<Card> cards){
 		
 	}
 	
-	public void countHand(Card cards[]){
+	public void countHand(ArrayList<Card> cards){
 		
 	}
 }

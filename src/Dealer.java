@@ -1,17 +1,18 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Dealer {
 		
 				
-		public static Card[] getNewHand(){
+		public static ArrayList<Card> getNewHand(){
 			Random r = new Random();
-			Card[] hand = new Card[13];
+			ArrayList<Card> hand = new ArrayList<Card>();
 			int num;
 			int High = 156;
 			int Low = 1;
 			for(int i=0;i<13;i++){
 				num = r.nextInt(High-Low) + Low;
-				hand[i] = new Card(num);
+				hand.add(new Card(num));
 			}
 			 return hand;
 		}
