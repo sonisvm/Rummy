@@ -63,12 +63,14 @@ public class Hand
 		
 	}
 	
-	public List<Card> sortByRank(List<Card> cardList) {
+	public List<Card> sortByRank(List<Card> cards) {
+		List<Card> cardList = new ArrayList<Card>(cards);
 		Collections.sort(cardList, new RankComparator());
 		return cardList;
 	}
 	
-	public List<Card> sortBySuit(List<Card> cardList) {
+	public List<Card> sortBySuit(List<Card> cards) {
+		List<Card> cardList = new ArrayList<Card>(cards);
 		Collections.sort(cardList,new SuitComparator());
 		return cardList;
 	}
@@ -89,6 +91,7 @@ public class Hand
 		for(Card card : cardsInHand){
 			System.out.print(card.toString() + " ");
 		}
+		System.out.println();
 	}
 	
 	public static ArrayList<Card> getCardsInHand() {
@@ -100,7 +103,9 @@ public class Hand
 		
 		hand.displayHand();
 		hand.removeSequences();
+		hand.displayHand();
 		hand.removeSets();
+		hand.displayHand();
 		
 	}
 

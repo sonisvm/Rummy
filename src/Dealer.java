@@ -1,6 +1,7 @@
 package Rummy;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Dealer {
@@ -25,7 +26,7 @@ public class Dealer {
 //				System.out.println(c.getRank() + " "+ c.getSuit());
 //			}
 			Hand h = new Hand();
-			h.sortByRank(h.getCardsInHand());
+			List<Card> c = h.sortByRank(h.getCardsInHand());
 			h.displayHand();
 			System.out.println();
 			h.sortBySuit(h.getCardsInHand());
