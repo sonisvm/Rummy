@@ -102,7 +102,18 @@ public class Hand
 	public static ArrayList<Card> getCardsInHand() {
 		return cardsInHand;
 	}
-
+	
+	public boolean isRummy(List<Card> cardList) {
+		return false;
+		
+	}
+	
+    public List<Card> getMinList(List<Card> Cards,List<List<Card>> combinations) {
+    	if(isRummy(Cards))
+    		return CardList;
+    	for(List<Card> clist: )
+    	
+    }
 	public static void main(String args[]){
 		Hand hand = new Hand();
 		
@@ -118,4 +129,5 @@ public class Hand
 		// TODO Auto-generated method stub
 		
 	}
+	 
 }
