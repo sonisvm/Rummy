@@ -67,7 +67,7 @@ public class Hand
 		
 	}
 	
-	public List<Card> sortByRank(List<Card> cards) {
+	public static List<Card> sortByRank(List<Card> cards) {
 		List<Card> cardList = new ArrayList<Card>(cards);
 		Collections.sort(cardList, new RankComparator());
 		return cardList;
@@ -88,6 +88,30 @@ public class Hand
 		//sort by suit
 		//sort by rank
 		for(int i=0;i<cardsInHand.size();i++){
+			
+		}
+	}
+	public static void findAndRemoveSets(){
+		List<Card> cardsSortedByRank = sortByRank(cardsInHand);
+		ArrayList<Card> cards = new ArrayList<Card>();
+		for(int i=0;i < cardsSortedByRank.size()-2;i++){
+			cards.add(cardsSortedByRank.get(i));
+			cards.add(cardsSortedByRank.get(i+1));
+			cards.add(cardsSortedByRank.get(i+2));
+			if(isSet(cards)){
+				if( i < cardsSortedByRank.size()-3){
+					cards.add(cardsSortedByRank.get(i+3));
+					if(isSet(cards)){
+						removeCards(cards);
+					}
+					else{
+						cards.remove(cards.size()-1);
+					}
+				
+				}
+				removeCards(cards);
+				
+			}
 			
 		}
 	}
@@ -119,9 +143,12 @@ public class Hand
 		
 		hand.displayHand();
 		hand.removeSequences();
+
+		hand.findAndRemoveSets();
+
 		hand.displayHand();
-		hand.removeSets();
-		hand.displayHand();
+		
+
 		
 	}
 
