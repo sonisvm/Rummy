@@ -18,9 +18,9 @@ public class Dealer {
 		}
 		
 		/*public static void main(String args[]){
-			Card[] cards=getNewHand();
+			ArrayList<Card> cards=getNewHand();
 			for(int i=0;i<13;i++){
-				System.out.println(cards[i].getRank() + " "+ cards[i].getSuit());
+				System.out.println(cards.get(i).getRank() + " "+ cards.get(i).getSuit());
 			}
 		}*/
 		
