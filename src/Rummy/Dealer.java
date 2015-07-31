@@ -19,7 +19,7 @@ public class Dealer {
 			}
 			 return hand;
 		}
-
+		
 		public static void main(String args[]){
 //			ArrayList<Card> cards=getNewHand();
 //			for(Card c: cards){
@@ -33,5 +33,4 @@ public class Dealer {
 			h.displayHand();
 		}
 		
-
 }

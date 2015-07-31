@@ -2,7 +2,9 @@ package Rummy;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Hand 
 {
@@ -45,7 +47,7 @@ public class Hand
 		return true;
 	}
 	
-
+	
 	public boolean isPossibleSequence(ArrayList<Card> cards){
 		for(int i = 0; i < cards.size(); i++)
 		{
@@ -62,12 +64,7 @@ public class Hand
 	
 
 	
-	public static void removeCards(ArrayList<Card> cards){
-
-		
-	}
-	
-	public static List<Card> sortByRank(List<Card> cards) {
+	public List<Card> sortByRank(List<Card> cards) {
 		List<Card> cardList = new ArrayList<Card>(cards);
 		Collections.sort(cardList, new RankComparator());
 		return cardList;
@@ -91,30 +88,6 @@ public class Hand
 			
 		}
 	}
-	public static void findAndRemoveSets(){
-		List<Card> cardsSortedByRank = sortByRank(cardsInHand);
-		ArrayList<Card> cards = new ArrayList<Card>();
-		for(int i=0;i < cardsSortedByRank.size()-2;i++){
-			cards.add(cardsSortedByRank.get(i));
-			cards.add(cardsSortedByRank.get(i+1));
-			cards.add(cardsSortedByRank.get(i+2));
-			if(isSet(cards)){
-				if( i < cardsSortedByRank.size()-3){
-					cards.add(cardsSortedByRank.get(i+3));
-					if(isSet(cards)){
-						removeCards(cards);
-					}
-					else{
-						cards.remove(cards.size()-1);
-					}
-				
-				}
-				removeCards(cards);
-				
-			}
-			
-		}
-	}
 	
 	public static void displayHand(){
 		for(Card card : cardsInHand){
@@ -132,10 +105,71 @@ public class Hand
 		
 	}
 	
-    public List<Card> getMinList(List<Card> Cards,List<List<Card>> combinations) {
-    	if(isRummy(Cards))
-    		return CardList;
-    	for(List<Card> clist: )
+	private Map<Integer,List<Card>> possibleRummyMatches = new HashMap<Integer,List<Card>>();
+//	
+//    public boolean getMinList(List<Card> initialList,List<Card> finalList,List<CombinationSequence> combinations,int cardsUsed) {
+//    	boolean flag = false;
+//    	if(isRummy(initialList)){
+//
+//    		finalList.addAll(initialList);
+//    		flag = true;
+//    	}	
+//    	
+//    	if(flag || isRummy(finalList))	
+//    	{
+//    		this.possibleRummyMatches.put(cardsUsed, finalList);
+//    		return true;
+//    	}
+//    		
+//    	for(CombinationSequence c :combinations) 
+//    	{
+//    		List<Card> clist = c.getCardCombination();
+//    		for(int i = 0;i<clist.size();i++) { 
+//    			finalList.addAll(clist);
+//    			if(clist.size() < 3)
+//    				cardsUsed = 3 -clist.size() + cardsUsed;
+//    			for(Card usedCard: clist) {
+//    				initialList.remove(usedCard);
+//    			}
+//    			getMinList(initialList,finalList,findAllSequences(initialList),cardsUsed)); 
+//    				
+//    			
+//    		}
+//    	}
+//		return true;
+//    	
+//    }
+
+	
+    public void getMinList(List<Card> initialList,List<Card> finalList,List<CombinationSequence> combinations,int cardsUsed) {
+    	
+    	if(initialList.isEmpty()) {
+    		if(isRummy(finalList)) {
+    			this.possibleRummyMatches.put(cardsUsed, finalList);
+    		}    		
+    		return;
+    	}
+    	
+    	for(CombinationSequence c :combinations) 
+    	{
+    		List<Card> clist = c.getCardCombination();
+    		for(int i = 0;i<clist.size();i++) { 
+    			finalList.addAll(clist);
+    			if(clist.size() < 3)
+    				cardsUsed = cardsUsed + 3 -clist.size();
+    			for(Card usedCard: clist) {
+    				initialList.remove(usedCard);
+    			}
+    			getMinList(initialList,finalList,findAllSequences(initialList),cardsUsed);     				
+    			
+    		}
+    	}
+    	
+    }
+    
+	
+    public List<CombinationSequence> findAllSequences(List<Card> clist) {
+		return null;
     	
     }
 	public static void main(String args[]){
@@ -143,12 +177,9 @@ public class Hand
 		
 		hand.displayHand();
 		hand.removeSequences();
-
-		hand.findAndRemoveSets();
-
 		hand.displayHand();
-		
-
+		hand.removeSets();
+		hand.displayHand();
 		
 	}
 
