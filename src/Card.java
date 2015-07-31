@@ -1,6 +1,6 @@
+package Rummy;
 
-
-public class Card implements Comparable<Card>
+public class Card 
 {
 	
 	private static final int JOKER = 52;

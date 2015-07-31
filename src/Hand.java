@@ -1,4 +1,7 @@
+package Rummy;
+
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Hand 
 {
@@ -56,4 +59,13 @@ public class Hand
 	public void countHand(ArrayList<Card> cards){
 		
 	}
+	
+	public void sortByRank() {
+		Collections.sort(cardsInHand, new RankComparator());
+	}
+	
+	public void sortBySuit() {
+		Collections.sort(cardsInHand,new SuitComparator());
+	}
+	
 }

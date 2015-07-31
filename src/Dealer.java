@@ -1,3 +1,5 @@
+package Rummy;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -17,11 +19,11 @@ public class Dealer {
 			 return hand;
 		}
 		
-		/*public static void main(String args[]){
-			Card[] cards=getNewHand();
-			for(int i=0;i<13;i++){
-				System.out.println(cards[i].getRank() + " "+ cards[i].getSuit());
+		public static void main(String args[]){
+			ArrayList<Card> cards=getNewHand();
+			for(Card c: cards){
+				System.out.println(c.getRank() + " "+ c.getSuit());
 			}
-		}*/
+		}
 		
 }
