@@ -1,3 +1,4 @@
+package Rummy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -59,17 +60,19 @@ public class Hand
 	}
 	
 
-	public static boolean isPossibleSequence(ArrayList<Card> cards){
+	
+	public static void removeCards(ArrayList<Card> cards){
+
 		
 	}
 	
-	public static boolean isPossibleSet(ArrayList<Card> cards){
-		
+	public void sortByRank() {
+		Collections.sort(cardsInHand, new RankComparator());
 	}
 
 	
-	public static void removeCards(ArrayList<Card> cards){
-		
+	public void sortBySuit() {
+		Collections.sort(cardsInHand,new SuitComparator());
 	}
 	
 	public static int countHand(ArrayList<Card> cards){
