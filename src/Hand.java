@@ -1,17 +1,30 @@
 
-public class Hand {
+public class Hand 
+{
 	Card cardsInHand[];
 	
-	Hand(){
-		cardsInHand = Deck.getNewHand();
+	Hand()
+	{
+		//cardsInHand = Deck.getNewHand();
 	}
 	
-	public boolean isSequence(Card cards[]){
+	public boolean isSequence(Card cards[])
+	{
+		for(int i = 0; i < cards.length; i++)
+		{
+			if(!(cards[i].isPrev(cards[i+1]))) return false;
+		}
+		return true;
 		
 	}
 	
-	public boolean isSet(Card cards[]){
-		
+	public boolean isSet(Card cards[])
+	{
+		for(int i = 0; i < cards.length; i++)
+		{
+			if(!(cards[i].isSameRank(cards[i+1]) && !cards[i].isSameSuite(cards[i+1]))) return false;
+		}
+		return true;
 	}
 	
 	public boolean isCanasta(Card cards[]){
