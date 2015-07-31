@@ -127,7 +127,28 @@ public class Hand
 		return cardsInHand;
 	}
 	
-	public boolean isRummy(List<Card> cardList) {
+	public boolean isRummy(List<Card> cards) {
+	    int i=0;
+	    int numNaturalSeq=0;
+	    ArrayList<Card> groupOfCards = new ArrayList<Card>();
+	    groupOfCards.add(cards.get(i));
+	    groupOfCards.add(cards.get(i+1));
+	    groupOfCards.add(cards.get(i+2));
+	    i += 3;
+	    while(i<cards.size()){
+	    	if(isSequence(groupOfCards) || isSet(groupOfCards) || isCanasta(groupOfCards)){
+	    		numNaturalSeq++;
+	    		groupOfCards.add(cards.get(i));
+	    		i++;
+	    	}
+	    	else{
+	    		groupOfCards.clear();
+	    		groupOfCards.add(cards.get(i-1));
+	    	}
+	    }
+	    if(numNaturalSeq >=2){
+	    	return true;
+	    }
 		return false;
 		
 	}
