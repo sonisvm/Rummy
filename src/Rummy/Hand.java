@@ -67,13 +67,15 @@ public class Hand
 		
 	}
 	
-	public List<Card> sortByRank(List<Card> cardList) {
+	public static List<Card> sortByRank(List<Card> cards) {
+		List<Card> cardList = new ArrayList<Card>(cards);
 		Collections.sort(cardList, new RankComparator());
 		return cardList;
 	}
 
 	
-	public List<Card> sortBySuit(List<Card> cardList) {
+	public List<Card> sortBySuit(List<Card> cards) {
+		List<Card> cardList = new ArrayList<Card>(cards);
 		Collections.sort(cardList,new SuitComparator());
 		return cardList;
 	}
@@ -90,9 +92,15 @@ public class Hand
 		}
 	}
 	public static void findAndRemoveSets(){
-		//sort by suit
-		//sort by rank
-		for(int i=0;i<cardsInHand.size();i++){
+		List<Card> cardsSortedByRank = sortByRank(cardsInHand);
+		ArrayList<Card> cards = new ArrayList<Card>();
+		for(int i=0;i < cardsSortedByRank.size()-3;i++){
+			cards.add(cardsSortedByRank.get(i));
+			cards.add(cardsSortedByRank.get(i+1));
+			cards.add(cardsSortedByRank.get(i+2));
+			if(isSet(cards)){
+				removeCards(cards);
+			}
 			
 		}
 	}
@@ -101,6 +109,7 @@ public class Hand
 		for(Card card : cardsInHand){
 			System.out.print(card.toString() + " ");
 		}
+		System.out.println();
 	}
 	
 	public static ArrayList<Card> getCardsInHand() {
@@ -112,7 +121,12 @@ public class Hand
 		
 		hand.displayHand();
 		hand.removeSequences();
+
 		hand.findAndRemoveSets();
+
+		hand.displayHand();
+		
+
 		
 	}
 
