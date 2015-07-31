@@ -3,9 +3,14 @@ public class Hand
 {
 	Card cardsInHand[];
 	
+<<<<<<< HEAD
 	Hand()
 	{
 		//cardsInHand = Deck.getNewHand();
+=======
+	Hand(){
+		cardsInHand = Dealer.getNewHand();
+>>>>>>> 5952d4ca0452451af36c95319a34bc0cfb6afdb3
 	}
 	
 	public boolean isSequence(Card cards[])
