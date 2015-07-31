@@ -1,3 +1,4 @@
+package Rummy;
 import java.util.ArrayList;
 
 public class Hand 
@@ -42,12 +43,19 @@ public class Hand
 	}
 	
 	public boolean isPossibleSequence(ArrayList<Card> cards){
-		
+		for(int i = 0; i < cards.size(); i++)
+		{
+			if( !( (cards.get(i).isPrev(cards.get(i+1)) 
+					|| (cards.get(i).isNext(cards.get(i+1)) 
+					&& (Math.abs(cards.get(i).getRank() - cards.get(i+1).getRank()) == 2)))))
+			{
+				return false;
+			}
+		}
+		return true;
+
 	}
 	
-	public boolean isPossibleSet(ArrayList<Card> cards){
-		
-	}
 	
 	public void removeCards(ArrayList<Card> cards){
 		
