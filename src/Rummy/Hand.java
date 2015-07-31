@@ -91,7 +91,7 @@ public class Hand
 			
 		}
 	}
-	public static void findAndRemoveSets(){
+	public static void findAndRemoveSetsAndCanasta(){
 		List<Card> cardsSortedByRank = sortByRank(cardsInHand);
 		ArrayList<Card> cards = new ArrayList<Card>();
 		for(int i=0;i < cardsSortedByRank.size()-2;i++){
@@ -144,7 +144,7 @@ public class Hand
 		hand.displayHand();
 		hand.removeSequences();
 
-		hand.findAndRemoveSets();
+		hand.findAndRemoveSetsAndCanasta();
 
 		hand.displayHand();
 		
