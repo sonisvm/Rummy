@@ -3,7 +3,7 @@ public class Hand {
 	Card cardsInHand[];
 	
 	Hand(){
-		cardsInHand = Deck.getNewHand();
+		cardsInHand = Dealer.getNewHand();
 	}
 	
 	public boolean isSequence(Card cards[]){
